@@ -1,0 +1,88 @@
+{
+  "info": {
+    "name": "User Module API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"mobile\": \"9876543210\", \"isAgeCertified\": true}",
+              "options": {"raw": {"language": "json"}}
+            },
+            "url": {"raw": "{{baseUrl}}/auth/register", "host": ["{{baseUrl}}"], "path": ["auth", "register"]}
+          }
+        },
+        {
+          "name": "Verify OTP",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"mobile\": \"9876543210\", \"otp\": \"123456\"}",
+              "options": {"raw": {"language": "json"}}
+            },
+            "url": {"raw": "{{baseUrl}}/auth/verify-otp", "host": ["{{baseUrl}}"], "path": ["auth", "verify-otp"]}
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"mobile\": \"9876543210\"}",
+              "options": {"raw": {"language": "json"}}
+            },
+            "url": {"raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Wallet",
+      "item": [
+        {
+          "name": "Get Balances",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{jwt}}"}],
+            "url": {"raw": "{{baseUrl}}/wallet", "host": ["{{baseUrl}}"], "path": ["wallet"]}
+          }
+        },
+        {
+          "name": "Add Money",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Authorization", "value": "Bearer {{jwt}}"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"amount\": 500, \"promoCode\": \"WELCOME50\"}",
+              "options": {"raw": {"language": "json"}}
+            },
+            "url": {"raw": "{{baseUrl}}/wallet/add-money", "host": ["{{baseUrl}}"], "path": ["wallet", "add-money"]}
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api"
+    },
+    {
+      "key": "jwt",
+      "value": ""
+    }
+  ]
+}
